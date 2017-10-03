@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DRUM CLOCK</title>
+  <link rel="stylesheet" href="style.css">
+  <script type='text/javascript' src='java.js'></script>
+</head>
+<body>
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+
+  <div class="keys">
+
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">kick</span>
+    </div>
+
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">snare</span>
+    </div>
+
+    <div data-key="84" class="key">
+      <kbd>T</kbd>
+      <span class="sound">open hi-hat</span>
+    </div>
+
+    <div data-key="89" class="key">
+      <kbd>Y</kbd>
+      <span class="sound">close hi-hat</span>
+    </div>
+
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">tom</span>
+    </div>
+
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">floor tom</span>
+    </div>
+
+    <div data-key="87" class="key">
+      <kbd>W</kbd>
+      <span class="sound">ride</span>
+    </div>
+
+  </div>
+
+  <audio data-key="65" src="sounds/kick.wav"></audio>
+  <audio data-key="70" src="sounds/snare.wav"></audio>
+  <audio data-key="84" src="sounds/openhat.wav"></audio>
+  <audio data-key="89" src="sounds/closehat.wav"></audio>
+  <audio data-key="83" src="sounds/tom.wav"></audio>
+  <audio data-key="68" src="sounds/ftom.wav"></audio>
+  <audio data-key="87" src="sounds/ride.wav"></audio>
+
+<script>
+
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+window.addEventListener('keydown', playSound);
+
+const secondHand = document.querySelector('.second-hand');
+const minsHand = document.querySelector('.min-hand');
+const hourHand = document.querySelector('.hour-hand');
+
+setInterval(setDate, 1000);
+setDate();
+
+
+</script>
+
+</body>
+</html>
